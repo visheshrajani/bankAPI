@@ -34,7 +34,7 @@ public class BranchesController {
 	public List<Branches> getBranches(@PathVariable(value="name") String name,@PathVariable(value="city") String city,@PathVariable(value="offset") Integer offset,@PathVariable(value="limit") Integer limit)
 	{
 		 List<Branches> branches=branchesRepository.findByBanksNameAndCity(name, city);
-		 List<Branches> b=branches.subList(offset, offset+limit);
+		 List<Branches> b=branches.subList(offset-1, offset+limit-1);
 		 return b;
 		
 
