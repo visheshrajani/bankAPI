@@ -31,8 +31,8 @@ public class BranchesController {
 	}
 	 @GetMapping(value="/branches")
 	public List<Branches> getBranches(@RequestParam(value="name") String name,@RequestParam(value="city") String city,
-			@RequestParam(value="offset", defaultValue="0") Integer offset,
-			@RequestParam(value="limit", defaultValue="branchesRepository.findByBanksNameAndCity(name, city).size()") Integer limit)
+			@RequestParam(value="offset") Integer offset,
+			@RequestParam(value="limit") Integer limit)
 	{
 		 List<Branches> branches=branchesRepository.findByBanksNameAndCity(name, city);
 		 List<Branches> b=branches.subList(offset-1, offset+limit-1);
