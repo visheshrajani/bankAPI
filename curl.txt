@@ -1,0 +1,14 @@
+
+
+//API call providing bank details for given ifsc code
+curl --insecure -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU2MjMzMzg0OCwiaWF0IjoxNTYxOTAxODQ4fQ.eaFdfrX9pWXirgFXCEOQJuXXRFFSFOaoMSdCk1WdQJ2dZVGk7mQiyObRt-BxrAABNShNssE7MBnUj-bAsqWoZw" https://demo-bank-api.herokuapp.com/api/bank?ifsc=ABHY0065001
+
+
+
+//API call providing all branches details for given bank name and city..In this case  ABHYUDAYA COOPERATIVE BANK LIMITED,MUMBAI
+curl --insecure -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU2MjMzMzg0OCwiaWF0IjoxNTYxOTAxODQ4fQ.eaFdfrX9pWXirgFXCEOQJuXXRFFSFOaoMSdCk1WdQJ2dZVGk7mQiyObRt-BxrAABNShNssE7MBnUj-bAsqWoZw" "https://demo-bank-api.herokuapp.com/api/branches?name=ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED&city=MUMBAI"
+
+
+
+API call setting limit=5 and offset=2 for above API call
+curl --insecure -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU2MjMzMzg0OCwiaWF0IjoxNTYxOTAxODQ4fQ.eaFdfrX9pWXirgFXCEOQJuXXRFFSFOaoMSdCk1WdQJ2dZVGk7mQiyObRt-BxrAABNShNssE7MBnUj-bAsqWoZw" "https://demo-bank-api.herokuapp.com/api/branches?name=ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED&city=MUMBAI&offset=2&limit=5"
