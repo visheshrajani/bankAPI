@@ -41,15 +41,8 @@ public class BranchesController {
 
 	}
 	 
-	/* @GetMapping(value="/{name}/{city}")
-	public List<Branches> getBranches(@PathVariable(value="name") String name,@PathVariable(value="city") String city)
-	{
-		 return branchesRepository.findByBanksNameAndCity(name, city);
-		
 
-	} 	
-	*/
-	
+
 
 	
 }
