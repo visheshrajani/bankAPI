@@ -5,14 +5,13 @@ package com.example.bankapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bankapi.model.Branches;
-
 import com.example.bankapi.repository.BranchesRepository;
 
 @RestController
@@ -24,14 +23,16 @@ public class BranchesController {
 	@Autowired
 	private BranchesRepository branchesRepository;
 
-	@GetMapping(value="/{ifsc}")
-	public Branches getDetails(@PathVariable String ifsc)
+	@GetMapping(value="/bank")
+	public Branches getDetails(@RequestParam(value="ifsc") String ifsc)
 	{
 		return branchesRepository.findOne(ifsc);
 		
 	}
-	 @GetMapping(value="/{name}/{city}/offset={offset}&limit={limit}")
-	public List<Branches> getBranches(@PathVariable(value="name") String name,@PathVariable(value="city") String city,@PathVariable(value="offset") Integer offset,@PathVariable(value="limit") Integer limit)
+	 @GetMapping(value="/branches")
+	public List<Branches> getBranches(@RequestParam(value="name") String name,@RequestParam(value="city") String city,
+			@RequestParam(value="offset", defaultValue="0") Integer offset,
+			@RequestParam(value="limit", defaultValue="branchesRepository.findByBanksNameAndCity(name, city).size()") Integer limit)
 	{
 		 List<Branches> branches=branchesRepository.findByBanksNameAndCity(name, city);
 		 List<Branches> b=branches.subList(offset-1, offset+limit-1);
@@ -40,13 +41,15 @@ public class BranchesController {
 
 	}
 	 
-	 @GetMapping(value="/{name}/{city}")
+	/* @GetMapping(value="/{name}/{city}")
 	public List<Branches> getBranches(@PathVariable(value="name") String name,@PathVariable(value="city") String city)
 	{
 		 return branchesRepository.findByBanksNameAndCity(name, city);
 		
 
 	} 	
+	*/
+	
 
 	
 }
